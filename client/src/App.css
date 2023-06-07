@@ -2,5 +2,10 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif
+  font-family: Arial, Helvetica, sans-serif;
+  ms-overflow-style: none;
+  background-color: "#1d1e23ff";
+}
+::-webkit-scrollbar {
+  display: none;
 }
