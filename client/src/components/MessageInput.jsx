@@ -7,6 +7,7 @@ import axios from "axios";
 const MessageInput = ({ currentUserId, chat, setSendMessage }) => {
   const [newMessage, setNewMessage] = useState("");
   const { messages, setMessages } = MessageState();
+  const API_URL = import.meta.env.VITE_SERVICE_URL;
   const handleSend = async () => {
     // send message to database mongoDB
     if (newMessage === "") {
@@ -24,7 +25,7 @@ const MessageInput = ({ currentUserId, chat, setSendMessage }) => {
         },
       };
       const { data } = await axios.post(
-        "api/message",
+        `${API_URL}/api/message`,
         { senderId: currentUserId, text: newMessage, chatId: chat._id },
         config
       );

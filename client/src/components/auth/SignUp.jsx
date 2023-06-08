@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { validateEmail } from "../../utils/validateEmail";
 
 const SignUp = () => {
+  const API_URL = import.meta.env.VITE_SERVICE_URL;
   const [show, setShow] = useState(false);
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -51,7 +52,7 @@ const SignUp = () => {
         },
       };
       const { data } = await axios.post(
-        "api/user/register",
+        `${API_URL}/api/user/register`,
         { name: userName, password, email },
         config
       );

@@ -25,7 +25,7 @@ const ChatPage = () => {
   const [allUsers, setAllUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const { messages } = MessageState();
-
+  const API_URL = import.meta.env.VITE_SERVICE_URL;
   const scroll = useRef();
   const socket = useRef();
   const history = useNavigate();
@@ -40,7 +40,7 @@ const ChatPage = () => {
     if (!user) {
       return;
     }
-    socket.current = io("https://coffeetalk-chat-service-3uzg.onrender.com");
+    socket.current = io(`${API_URL}`);
     socket.current.emit("new-user-add", user?._id);
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
@@ -78,7 +78,7 @@ const ChatPage = () => {
   //get all users
   const getAllUsers = async () => {
     try {
-      const { data } = await axios.get("api/user/get-allusers");
+      const { data } = await axios.get(`${API_URL}/api/user/get-allusers`);
       setAllUsers(data.users);
     } catch (err) {
       console.log(err);

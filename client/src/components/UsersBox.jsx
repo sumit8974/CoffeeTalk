@@ -16,6 +16,7 @@ const ChatsBox = ({
   onlineUsers,
   selectedUser,
 }) => {
+  const API_URL = import.meta.env.VITE_SERVICE_URL;
   const checkOnlineStatus = () => {
     const online = onlineUsers.find((user) => user.userId === userData._id);
     return online ? true : false;
@@ -29,7 +30,7 @@ const ChatsBox = ({
         },
       };
       const { data } = await axios.post(
-        "api/chat/",
+        `${API_URL}/api/chat/`,
         { senderId: currentUserId, receiverId: userData._id },
         config
       );
@@ -41,7 +42,7 @@ const ChatsBox = ({
   const selectChat = async () => {
     try {
       const { data } = await axios.get(
-        `api/chat/find/${currentUserId}/${userData._id}`
+        `${API_URL}/api/chat/find/${currentUserId}/${userData._id}`
       );
       if (data) {
         setCurrentChat(data);

@@ -12,7 +12,7 @@ const MessageBody = ({
 }) => {
   const [userData, setUserData] = useState(null);
   const { messages, setMessages } = MessageState();
-
+  const API_URL = import.meta.env.VITE_SERVICE_URL;
   useEffect(() => {
     if (receivedMessage !== null && receivedMessage.chatId === chat._id) {
       setMessages([...messages, receivedMessage]);
@@ -30,7 +30,7 @@ const MessageBody = ({
           },
         };
         const { data } = await axios.post(
-          "api/user/get-user",
+          `${API_URL}/api/user/get-user`,
           { id: userId },
           config
         );

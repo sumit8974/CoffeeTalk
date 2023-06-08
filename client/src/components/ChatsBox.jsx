@@ -11,7 +11,7 @@ import axios from "axios";
 
 const ChatsBox = ({ currentUserId, chat, online }) => {
   const [userData, setUserData] = useState(null);
-
+  const API_URL = import.meta.env.VITE_SERVICE_URL;
   const userId = chat?.members?.find((id) => id !== currentUserId);
   const getUserData = async () => {
     try {
@@ -21,7 +21,7 @@ const ChatsBox = ({ currentUserId, chat, online }) => {
         },
       };
       const { data } = await axios.post(
-        "api/user/get-user",
+        `${API_URL}/api/user/get-user`,
         { id: userId },
         config
       );
