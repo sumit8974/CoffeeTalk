@@ -22,9 +22,8 @@ const Login = () => {
   const toast = useToast();
 
   const history = useNavigate();
-
+  const API_URL = import.meta.env.VITE_SERVICE_URL;
   const handleLogin = async () => {
-    console.log(import.meta.env.VITE_SERVICE_URL);
     setLoading(true);
     if (email === "" || password === "") {
       toast({
@@ -43,7 +42,7 @@ const Login = () => {
         },
       };
       const { data } = await axios.post(
-        "api/user/login",
+        `${API_URL}/api/user/login`,
         { email, password },
         config
       );
