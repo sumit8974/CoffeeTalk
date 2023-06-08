@@ -29,7 +29,7 @@ const ChatsBox = ({
         },
       };
       const { data } = await axios.post(
-        "http://localhost:5000/api/chat/",
+        "api/chat/",
         { senderId: currentUserId, receiverId: userData._id },
         config
       );
@@ -41,7 +41,7 @@ const ChatsBox = ({
   const selectChat = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/chat/find/${currentUserId}/${userData._id}`
+        `api/chat/find/${currentUserId}/${userData._id}`
       );
       if (data) {
         setCurrentChat(data);

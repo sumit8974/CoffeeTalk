@@ -40,7 +40,7 @@ const ChatPage = () => {
     if (!user) {
       return;
     }
-    socket.current = io("http://localhost:5000");
+    socket.current = io("https://coffeetalk-chat-service-3uzg.onrender.com");
     socket.current.emit("new-user-add", user?._id);
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
@@ -58,7 +58,6 @@ const ChatPage = () => {
   useEffect(() => {
     // console.log(socket);
     socket.current?.on("receive-message", (data) => {
-      console.log("message", data);
       setReceivedMessage(data);
     });
   }, []);
@@ -79,9 +78,7 @@ const ChatPage = () => {
   //get all users
   const getAllUsers = async () => {
     try {
-      const { data } = await axios.get(
-        "http://localhost:5000/api/user/get-allusers"
-      );
+      const { data } = await axios.get("api/user/get-allusers");
       setAllUsers(data.users);
     } catch (err) {
       console.log(err);

@@ -7,9 +7,6 @@ import axios from "axios";
 const MessageInput = ({ currentUserId, chat, setSendMessage }) => {
   const [newMessage, setNewMessage] = useState("");
   const { messages, setMessages } = MessageState();
-  // const handleChange = (newMessage) => {
-  //   setNewMessage(newMessage);
-  // };
   const handleSend = async () => {
     // send message to database mongoDB
     if (newMessage === "") {

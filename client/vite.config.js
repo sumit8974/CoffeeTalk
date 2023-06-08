@@ -7,8 +7,8 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        // target: "https://ecommerce-sumit.onrender.com",
-        target: "http://localhost:5000/",
+        target: "https://coffeetalk-chat-service-3uzg.onrender.com",
+        // target: "http://localhost:5000/",
         changeOrigin: true,
         secure: false,
         ws: true,

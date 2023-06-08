@@ -21,7 +21,7 @@ const HomePage = () => {
     if (user) {
       history("/chat");
     }
-  }, [user]);
+  }, [user, history]);
 
   return (
     <Box h={"100vh"} bg={"#1d1e23ff"}>
