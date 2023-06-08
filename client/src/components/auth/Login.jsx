@@ -24,6 +24,7 @@ const Login = () => {
   const history = useNavigate();
 
   const handleLogin = async () => {
+    console.log(import.meta.env.VITE_SERVICE_URL);
     setLoading(true);
     if (email === "" || password === "") {
       toast({
