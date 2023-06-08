@@ -18,7 +18,7 @@ const Navbar = () => {
     });
     setTimeout(() => {
       history("/auth");
-    }, 1000);
+    }, 2000);
   };
   return (
     <Flex

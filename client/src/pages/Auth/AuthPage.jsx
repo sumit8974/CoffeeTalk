@@ -11,17 +11,16 @@ import {
   Tab,
   TabPanel,
 } from "@chakra-ui/react";
-import { UserState } from "../../../context/UserProvider";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  const { user } = UserState();
   const history = useNavigate();
   useEffect(() => {
-    if (user) {
+    const userInfo = localStorage.getItem("CoffeeTalkUserInfo");
+    if (userInfo) {
       history("/chat");
     }
-  }, [user, history]);
+  }, []);
 
   return (
     <Box h={"100vh"} bg={"#1d1e23ff"}>

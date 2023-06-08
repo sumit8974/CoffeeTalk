@@ -7,14 +7,14 @@ import { ChakraProvider } from "@chakra-ui/react";
 import MessageProvider from "../context/MessageProvider.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ChakraProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <ChakraProvider>
         <MessageProvider>
           <UserProvider>
             <App />
           </UserProvider>
         </MessageProvider>
-      </BrowserRouter>
-    </ChakraProvider>
+      </ChakraProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
