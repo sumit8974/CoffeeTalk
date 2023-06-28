@@ -59,7 +59,7 @@ const Login = () => {
     } catch (err) {
       toast({
         title: "Error Occured",
-        description: "Check the credentails...",
+        description: err.response.data.msg,
         status: "error",
         isClosable: true,
         duration: 3000,
@@ -78,8 +78,8 @@ const Login = () => {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          borderColor={"#16171bff"}
-          _hover={{ borderColor: "#16171bff" }}
+          borderColor={"black"}
+          _hover={{ borderColor: "black" }}
           color="white"
         />
       </FormControl>
@@ -90,8 +90,8 @@ const Login = () => {
             type={show ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            borderColor={"#16171bff"}
-            _hover={{ borderColor: "#16171bff" }}
+            borderColor={"black"}
+            _hover={{ borderColor: "black" }}
             color="white"
           />
           <InputRightElement width="4.5rem">
@@ -101,8 +101,9 @@ const Login = () => {
               size="sm"
               p="20px"
               onClick={handleClick}
-              bg={"#16171bff"}
-              _hover={{ bg: "#16171bff", opacity: "0.7" }}
+              bg={"black"}
+              _hover={{ bg: "black", opacity: "0.7" }}
+              mr={"-2px"}
             >
               {show ? "Hide" : "Show"}
             </Button>

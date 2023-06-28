@@ -13,6 +13,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { validateEmail } from "../../utils/validateEmail";
+import { checkPassword } from "../../utils/checkPassword";
 
 const SignUp = () => {
   const API_URL = import.meta.env.VITE_SERVICE_URL;
@@ -45,6 +46,17 @@ const SignUp = () => {
       setLoading(false);
       return;
     }
+    if (!checkPassword(password)) {
+      toast({
+        title:
+          "password of min 8 letter, with at least a symbol, upper, lower case and a number...",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+      });
+      setLoading(false);
+      return;
+    }
     try {
       const config = {
         headers: {
@@ -70,7 +82,7 @@ const SignUp = () => {
     } catch (err) {
       toast({
         title: "Error occured",
-        description: err.message,
+        description: err.response.data.msg,
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -89,8 +101,8 @@ const SignUp = () => {
           type="text"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
-          borderColor={"#16171bff"}
-          _hover={{ borderColor: "#16171bff" }}
+          borderColor={"black"}
+          _hover={{ borderColor: "black" }}
           color="white"
         />
       </FormControl>
@@ -100,8 +112,8 @@ const SignUp = () => {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          borderColor={"#16171bff"}
-          _hover={{ borderColor: "#16171bff" }}
+          borderColor={"black"}
+          _hover={{ borderColor: "black" }}
           color="white"
         />
       </FormControl>
@@ -112,8 +124,8 @@ const SignUp = () => {
             type={show ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            borderColor={"#16171bff"}
-            _hover={{ borderColor: "#16171bff" }}
+            borderColor={"black"}
+            _hover={{ borderColor: "black" }}
             color="white"
           />
           <InputRightElement width="4.5rem">
@@ -122,9 +134,9 @@ const SignUp = () => {
               size="sm"
               p="20px"
               onClick={handleClick}
-              bg={"#16171bff"}
+              bg={"black"}
               color={"white"}
-              _hover={{ bg: "#16171bff", opacity: "0.8" }}
+              _hover={{ bg: "black", opacity: "0.8" }}
             >
               {show ? "Hide" : "Show"}
             </Button>
